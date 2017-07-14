@@ -24,11 +24,13 @@ public class MainUI extends VBox{
 	static{
 		addGenerator(new NormalBlockGenerator());
 		addGenerator(new NormalItemGenerator());
+		addGenerator(new BlockSlabGenerator());
 	}
 	
 	@FXML private ComboBox<String> jsonTypeComboBox;
 	@FXML private TextField modidTextField;
 	@FXML private TextField nameTextField;
+	@FXML private TextField textureTextField;
 	
 	public MainUI() throws IOException {
 		FXMLLoader loader = new FXMLLoader(MainUI.class.getResource("/fxml/MainUI.fxml"));
@@ -37,6 +39,7 @@ public class MainUI extends VBox{
 		loader.setCharset(StandardCharsets.UTF_8);
 		loader.load();
 		
+		nameTextField.textProperty().addListener(event->textureTextField.setText(nameTextField.getText()));
 		jsonTypeComboBox.getItems().addAll(GENERATORS.keySet());
 	}
 	
@@ -48,9 +51,10 @@ public class MainUI extends VBox{
 		
 		String modid = modidTextField.getText();
 		String name = nameTextField.getText();
+		String texture = textureTextField.getText();
 		IGenerator generator = GENERATORS.get(jsonTypeComboBox.getValue());
 		if(generator!=null)
-			generator.generate(path,modid,name);
+			generator.generate(path,modid,name,texture);
 	}
 	
 	private File lastPath;

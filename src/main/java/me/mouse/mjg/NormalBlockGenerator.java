@@ -12,7 +12,7 @@ public class NormalBlockGenerator implements IGenerator{
 	}
 
 	@Override
-	public void generate(File path,String modid,String name) {
+	public void generate(File path,String modid,String name, String texture) {
 		File blockstate = new File(path,"blockstates/"+name+".json");
 		IOUtils.writeFile(blockstate, String.format("{\n"
 				+ "  \"variants\": {\n"
@@ -31,5 +31,4 @@ public class NormalBlockGenerator implements IGenerator{
 				+"  \"parent\": \"%1$s:block/%2$s\"\n"
 				+"}", modid, name));
 	}
-
 }

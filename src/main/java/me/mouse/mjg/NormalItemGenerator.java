@@ -12,7 +12,7 @@ public class NormalItemGenerator implements IGenerator{
 	}
 
 	@Override
-	public void generate(File path, String modid, String name) {
+	public void generate(File path, String modid, String name, String texture) {
 		File item = new File(path, "models/item/"+name+".json");
 		IOUtils.writeFile(item, String.format("{\n"
 				+"  \"parent\": \"item/generated\",\n"

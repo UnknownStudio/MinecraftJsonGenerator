@@ -3,6 +3,7 @@ package me.mouse.mjg.util;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.InputStream;
 
 public enum IOUtils {
 	;
@@ -17,6 +18,19 @@ public enum IOUtils {
 			for(String line:org.apache.commons.io.IOUtils.readLines(reader))
 				builder.append(line).append("\n");
 			reader.close();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return builder.toString();
+	}
+	
+	public static String readFile(InputStream input){
+		
+		StringBuilder builder = new StringBuilder("");
+		try{
+			for(String line:org.apache.commons.io.IOUtils.readLines(input))
+				builder.append(line).append("\n");
+			input.close();
 		}catch(Exception e){
 			e.printStackTrace();
 		}
