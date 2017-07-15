@@ -2,19 +2,20 @@ package me.mouse.mjg;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
 import com.google.common.collect.Maps;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.DirectoryChooser;
 
-public class MainUI extends VBox{
+public class MainUI extends VBox implements IController{
 	
 	public static final Map<String, IGenerator> GENERATORS = Maps.newHashMap();
 	public static void addGenerator(IGenerator generator){
@@ -25,22 +26,31 @@ public class MainUI extends VBox{
 		addGenerator(new NormalBlockGenerator());
 		addGenerator(new NormalItemGenerator());
 		addGenerator(new BlockSlabGenerator());
+		addGenerator(new CustomSlabGenerator());
 	}
 	
 	@FXML private ComboBox<String> jsonTypeComboBox;
 	@FXML private TextField modidTextField;
 	@FXML private TextField nameTextField;
-	@FXML private TextField textureTextField;
+	@FXML private AnchorPane customPane;
 	
 	public MainUI() throws IOException {
-		FXMLLoader loader = new FXMLLoader(MainUI.class.getResource("/fxml/MainUI.fxml"));
-		loader.setRoot(this);
-		loader.setController(this);
-		loader.setCharset(StandardCharsets.UTF_8);
-		loader.load();
+		loadFXML("MainUI");
 		
-		nameTextField.textProperty().addListener(event->textureTextField.setText(nameTextField.getText()));
 		jsonTypeComboBox.getItems().addAll(GENERATORS.keySet());
+		jsonTypeComboBox.valueProperty().addListener(event->{
+			IGenerator generator = GENERATORS.get(jsonTypeComboBox.getValue());
+			if(generator instanceof Node){
+				Node node = (Node) generator;
+				customPane.getChildren().add(node);
+				AnchorPane.setBottomAnchor(node, 0D);
+				AnchorPane.setLeftAnchor(node, 0D);
+				AnchorPane.setRightAnchor(node, 0D);
+				AnchorPane.setTopAnchor(node, 0D);
+			}else{
+				customPane.getChildren().clear();
+			}
+		});
 	}
 	
 	@FXML
@@ -51,10 +61,9 @@ public class MainUI extends VBox{
 		
 		String modid = modidTextField.getText();
 		String name = nameTextField.getText();
-		String texture = textureTextField.getText();
 		IGenerator generator = GENERATORS.get(jsonTypeComboBox.getValue());
 		if(generator!=null)
-			generator.generate(path,modid,name,texture);
+			generator.generate(path,modid,name);
 	}
 	
 	private File lastPath;

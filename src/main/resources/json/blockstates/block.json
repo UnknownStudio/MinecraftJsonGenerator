@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "normal": {"model": "%1$s:%2$s"}
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "%1$s:blocks/%2$s"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "half=bottom,variant=default": { "model": "%1$s:%2$s" },
+    "half=top,variant=default": { "model": "%1$s:%2$s" }
+  }
+}

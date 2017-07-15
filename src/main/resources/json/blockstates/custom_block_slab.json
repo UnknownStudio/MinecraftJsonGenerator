@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "type=bottom": { "model": "%1$s:%2$s_half" },
+    "type=top": { "model": "%1$s:%2$s_top" },
+    "type=double": { "model": "%1$s:%3$s" }
+  }
+}

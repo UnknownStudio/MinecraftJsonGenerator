@@ -25,12 +25,7 @@
             <TextField fx:id="nameTextField" />
          </children>
       </FlowPane>
-      <FlowPane hgap="5.0">
-         <children>
-            <Label text="材质名:" />
-            <TextField fx:id="textureTextField" />
-         </children>
-      </FlowPane>
+      <AnchorPane fx:id="customPane" />
       <Button mnemonicParsing="false" onAction="#generate" text="生成" />
    </children>
    <opaqueInsets>
