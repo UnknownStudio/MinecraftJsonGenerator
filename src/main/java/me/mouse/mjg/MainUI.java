@@ -8,7 +8,6 @@ import com.google.common.collect.Maps;
 
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -27,6 +26,9 @@ public class MainUI extends VBox implements IController{
 		addGenerator(new NormalItemGenerator());
 		addGenerator(new BlockSlabGenerator());
 		addGenerator(new CustomSlabGenerator());
+		addGenerator(new BlockStairsGenerator());
+		addGenerator(new BlockFenceGenerator());
+		addGenerator(new BlockFenceGateGenerator());
 	}
 	
 	@FXML private ComboBox<String> jsonTypeComboBox;

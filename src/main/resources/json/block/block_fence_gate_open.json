@@ -1,0 +1,6 @@
+{
+    "parent": "block/fence_gate_open",
+    "textures": {
+        "texture": "%1$s:blocks/%2$s"
+    }
+}

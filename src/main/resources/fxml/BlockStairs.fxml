@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<fx:root spacing="5.0" type="VBox" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <FlowPane hgap="5.0">
+         <children>
+            <Label text="材质名:" />
+            <TextField fx:id="textureTF" />
+         </children>
+      </FlowPane>
+      <FlowPane hgap="5.0">
+         <children>
+            <Label text="外楼梯名:" />
+            <TextField fx:id="outerNameTF" />
+         </children>
+      </FlowPane>
+      <FlowPane hgap="5.0">
+         <children>
+            <Label text="内楼梯名:" />
+            <TextField fx:id="innerNameTF" />
+         </children>
+      </FlowPane>
+   </children>
+</fx:root>
